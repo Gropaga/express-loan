@@ -27,8 +27,10 @@ passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
-passport.deserializeUser(function(user, done) {
-    done(null, user.id);
+passport.deserializeUser(async function(user, done) {
+    const Users = models.Sequelize.Users;
+    let user_ = await Users.findById(user);
+    done(null, user_);
 });
 
 module.exports = passport;
