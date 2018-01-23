@@ -1,0 +1,8 @@
+Create model:
+
+1. node_modules/.bin/sequelize model:generate --name Users --attributes username:string,password:string
+2. node_modules/.bin/sequelize db:migrate
+
+Create seed:
+1. node_modules/.bin/sequelize seed:generate --name demo-user
+2. node_modules/.bin/sequelize db:seed:all
