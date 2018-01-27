@@ -30,13 +30,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(session);
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(flash());
+
+app.use(require('./middleware/connect-flash-exists'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./middleware/sendHttpError'));
-
 
 app.use(function (req, res, next) {
     if (req.path === "/") {
