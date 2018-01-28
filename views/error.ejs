@@ -1,6 +1,7 @@
-<% layout('/layout/page') -%>
+<% layout('/layout/errorPage') -%>
 <% block('title', error.message) -%>
 
-<p>Извините, произошла ошибка.</p>
+<h1><%=error.status%></h1>
+<h3>Извините, произошла ошибка.</h3>
 
 <p><%=error.message%></p>

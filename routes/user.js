@@ -7,9 +7,9 @@ const models = require('../models/index');
 router.get('/:id', async function (req, res, next) {
     try {
         const Users = models.Sequelize.Users;
-        const id = req.params.id;
+        const id = parseInt(req.params.id) || 0;
 
-        if (!Number.isInteger(id)) {
+        if (id && !Number.isInteger(id)) {
             return next(new HttpError(404, 'User not found'));
         }
 
@@ -21,7 +21,7 @@ router.get('/:id', async function (req, res, next) {
             res.json(user);
         }
     } catch (err) {
-        next(new HttpError(404, 'User not found'));
+        next(err);
     }
 });
 

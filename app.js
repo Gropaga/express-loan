@@ -10,8 +10,6 @@ const expressErrorHandler = require('errorhandler');
 const session = require('./libs/session');
 const passport = require('./libs/passport');
 
-const flash = require('connect-flash');
-
 const db = require('./libs/db');
 
 const app = express();
@@ -34,22 +32,13 @@ app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(flash());
-
-app.use(require('./middleware/connect-flash-exists'));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(require('./middleware/sendHttpError'));
-
-app.use(function (req, res, next) {
-    if (req.path === "/") {
-        req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
-    } else if (req.path === "/users") {
-        req.session.numberOfVisitsUsers = req.session.numberOfVisitsUsers + 1 || 1;
-    }
-    next();
-});
+app.use(require('./middleware/http-error'));
+app.use(require('./middleware/flash'));
+app.use(require('./middleware/set-locals'));
 
 require('routes')(app);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // catch 404 and forward to error handler

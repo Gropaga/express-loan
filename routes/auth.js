@@ -1,11 +1,9 @@
 const HttpError = require('error').HttpError;
 const express = require('express');
 const router = express.Router();
-const models = require('../models/index');
 const passport = require('passport');
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/login', function (req, res, next) {
     try {
         res.render('login');
     } catch (err) {
@@ -13,7 +11,12 @@ router.get('/', function (req, res, next) {
     }
 });
 
-router.post('/',
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
+
+router.post('/login',
     passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login',
