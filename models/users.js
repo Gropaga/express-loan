@@ -2,7 +2,8 @@
 module.exports = (sequelize, DataTypes) => {
     let Users = sequelize.define('Users', {
         username: DataTypes.STRING,
-        password: DataTypes.STRING
+        password: DataTypes.STRING,
+        type: DataTypes.STRING
     }, {
         classMethods: {
             associate: function (models) {
@@ -10,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
     });
+
+    Users.TYPE_ADMIN = 'admin';
+    Users.TYPE_SHOP = 'shop';
+    Users.TYPE_LOAN = 'loan';
 
     Users.prototype.validPassword = function (password) {
         return (password === this.password);

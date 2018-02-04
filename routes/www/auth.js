@@ -1,7 +1,7 @@
 const HttpError = require('error').HttpError;
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
+const passport = require('libs/passport');
 
 router.get('/login', function (req, res, next) {
     try {
@@ -17,7 +17,7 @@ router.get('/logout', function(req, res){
 });
 
 router.post('/login',
-    passport.authenticate('local', {
+    passport.authenticate(passport.AUTH_WWW, {
         successRedirect: '/',
         failureRedirect: '/login',
         successFlash: 'Welcome!',
