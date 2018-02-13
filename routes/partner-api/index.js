@@ -3,7 +3,7 @@ const passport = require('libs/passport');
 
 module.exports = function(app) {
     app.use(
-        '/loan/v1',
+        '/partner/v1',
         // basic authentication protected routes
         passport.authenticate(
             passport.AUTH_LOAN,

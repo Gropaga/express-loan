@@ -6,3 +6,13 @@ Create model:
 Create seed:
 1. node_modules/.bin/sequelize seed:generate --name demo-user
 2. node_modules/.bin/sequelize db:seed:all
+
+
+1. node_modules/.bin/sequelize model:generate --name Clients --attributes name:string,surname:string,
+personal_number:string, document_number:string, email:string, tel:string, bank_account:string
+
+node_modules/.bin/sequelize model:generate --name Shops --attributes name:string,bank_account:string
+
+node_modules/.bin/sequelize model:generate --name Partners --attributes name:string,bank_account:string
+
+node_modules/.bin/sequelize model:generate --name Loans --attributes name:string,bank_account:string,status:string,request_number:string,request:description:text,amount_amount:decimal,amount_currency:string

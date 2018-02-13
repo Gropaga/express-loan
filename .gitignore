@@ -33,3 +33,4 @@ npm-debug.log
 config/production
 
 .idea
+.DS_Store

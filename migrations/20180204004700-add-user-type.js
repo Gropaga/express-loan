@@ -8,7 +8,7 @@ module.exports = {
                 {
                     type: Sequelize.STRING,
                     allowNull: false,
-                    defaultValue: 'admin',
+                    defaultValue: 'admin'
                 }
             )
         ];
