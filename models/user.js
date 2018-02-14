@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    let Users = sequelize.define('Users', {
+    let User = sequelize.define('User', {
         username: DataTypes.STRING,
         password: DataTypes.STRING,
         type: {
@@ -8,23 +8,14 @@ module.exports = (sequelize, DataTypes) => {
             isIn: [Object.keys(Types).map(key => Types[key])]
         },
 
-    }, {
-        name: {
-            singular: "User",
-            plural: "Users"
-        }
-    });
+    }, {});
 
-    // User.associate = function(models) {
-    //     models.User.hasOne(models.Partner);
-    // };
+    Object.keys(Types).forEach(key => User[key] = Types[key]);
 
-    Object.keys(Types).forEach(key => Users[key] = Types[key]);
-
-    Users.prototype.validPassword = function (password) {
+    User.prototype.validPassword = function (password) {
         return (password === this.password);
     };
-    return Users;
+    return User;
 };
 
 const Types = {

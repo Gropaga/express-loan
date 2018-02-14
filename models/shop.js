@@ -1,14 +1,18 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Shops = sequelize.define('shops', {
-    name: DataTypes.STRING,
-    bank_account: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
-  return Shops;
+    const Shop = sequelize.define('Shop', {
+        name: DataTypes.STRING,
+        bankAccount: DataTypes.STRING
+    }, {});
+
+    Shop.associate = function (models) {
+        models.Shop.belongsTo(models.User, {
+            onDelete: "CASCADE",
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+    return Shop;
 };

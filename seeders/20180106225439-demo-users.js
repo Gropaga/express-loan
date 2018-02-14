@@ -16,9 +16,15 @@ module.exports = {
             createdAt: now,
             updatedAt: now
         },{
-            username: 'test-loan',
+            username: 'test-partner',
             password: 'Test1234',
-            type: 'loan',
+            type: 'partner',
+            createdAt: now,
+            updatedAt: now
+        },{
+            username: 'test-client',
+            password: 'Test1234',
+            type: 'client',
             createdAt: now,
             updatedAt: now
         }], {});

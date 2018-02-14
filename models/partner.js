@@ -1,18 +1,13 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-    const Partners = sequelize.define('Partners', {
+    const Partner = sequelize.define('Partner', {
         name: DataTypes.STRING,
         bankAccount: DataTypes.STRING,
-    }, {
-        name: {
-            singular: "partner",
-            plural: "partners"
-        }
-    });
+    }, {});
 
-    Partners.associate = function(models) {
-        models.Partners.belongsTo(models.Users, {
+    Partner.associate = function(models) {
+        models.Partner.belongsTo(models.User, {
             onDelete: "CASCADE",
             foreignKey: {
                 allowNull: false
@@ -20,5 +15,5 @@ module.exports = (sequelize, DataTypes) => {
         });
     };
 
-    return Partners;
+    return Partner;
 };

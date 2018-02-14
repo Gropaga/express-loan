@@ -23,7 +23,7 @@ module.exports = {
                     type: Sequelize.STRING
                 },
                 dob: {
-                    type: Sequelize.STRING
+                    type: Sequelize.DATEONLY
                 },
                 tel: {
                     type: Sequelize.STRING
@@ -36,7 +36,7 @@ module.exports = {
                     allowNull: false,
                     type: Sequelize.DATE
                 },
-                serId: {
+                UserId: {
                     type: Sequelize.BIGINT,
                     references: {
                         model: "Users",

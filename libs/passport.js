@@ -11,11 +11,11 @@ passport.AUTH_LOAN = 'authLoan';
 const wwwAuth = new LocalStrategy(
     async function(username, password, done) {
         try {
-            const Users = models.Sequelize.Users;
-            let user = await Users.findOne(
+            const User = models.Sequelize.User;
+            let user = await User.findOne(
                 {
                     where: {
-                        username: username, type: Users.TYPE_ADMIN
+                        username: username, type: User.TYPE_ADMIN
                     }
                 }
             );
@@ -41,11 +41,11 @@ passport.use(wwwAuth);
 const shopAuth = new BasicStrategy(
     async function(username, password, done) {
         try {
-            const Users = models.Sequelize.Users;
-            let user = await Users.findOne(
+            const User = models.Sequelize.User;
+            let user = await User.findOne(
                 {
                     where: {
-                        username: username, type: Users.TYPE_SHOP
+                        username: username, type: User.TYPE_SHOP
                     }
                 }
             );
@@ -70,11 +70,11 @@ passport.use(shopAuth);
 const loanAuth = new BasicStrategy(
     async function(username, password, done) {
         try {
-            const Users = models.Sequelize.Users;
-            let user = await Users.findOne(
+            const User = models.Sequelize.User;
+            let user = await User.findOne(
                 {
                     where: {
-                        username: username, type: Users.TYPE_LOAN
+                        username: username, type: User.TYPE_LOAN
                     }
                 }
             );
@@ -100,10 +100,14 @@ passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 
-passport.deserializeUser(async function(user, done) {
-    const Users = models.Sequelize.Users;
-    let user_ = await Users.findById(user);
-    done(null, user_);
+passport.deserializeUser(async function(id, done) {
+    const User = models.Sequelize.User;
+    try {
+        let user = await User.findById(id);
+        return done(null, user);
+    } catch (err) {
+        return done(err);
+    }
 });
 
 module.exports = passport;

@@ -1,18 +1,48 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Loans = sequelize.define('loans', {
-    name: DataTypes.STRING,
-    bank_account: DataTypes.STRING,
-    status: DataTypes.STRING,
-    request_number: DataTypes.STRING,
-    amount_amount: DataTypes.DECIMAL,
-    amount_currency: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
-  return Loans;
+    const Loan = sequelize.define('Loan', {
+        status: {
+            type: DataTypes.STRING,
+            isIn: [Object.keys(Statuses).map(key => Statuses[key])]
+        },
+        identifier: DataTypes.STRING,
+        description: DataTypes.STRING,
+        amountAmount: DataTypes.DECIMAL,
+        amountCurrency: DataTypes.STRING,
+    }, {});
+
+    Object.keys(Statuses).forEach(key => Loan[key] = Statuses[key]);
+
+    Loan.associate = function (models) {
+        models.Loan.belongsTo(models.Shop, {
+            onDelete: "CASCADE",
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        models.Loan.belongsTo(models.Client, {
+            onDelete: "CASCADE",
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        models.Loan.belongsTo(models.Partner, {
+            onDelete: "CASCADE",
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+    return Loan;
+};
+
+const Statuses = {
+    TYPE_DRAFT: 'darft',
+    TYPE_REQUEST_SENT: 'request_sent',
+    TYPE_TRANSFER_MONEY: 'transfer_money',
+    TYPE_LOAN_ISSUED: 'loan_issued',
+    TYPE_CANT_MAKE_OFFER: 'cant_make_offer'
 };
