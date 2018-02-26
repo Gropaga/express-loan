@@ -3,7 +3,7 @@ const passport = require('libs/passport');
 
 module.exports = function (app) {
     app.use(
-        '/shop/v1',
+        '/shop-api/v1',
         // basic authentication protected routes
         passport.authenticate(
             passport.AUTH_SHOP,

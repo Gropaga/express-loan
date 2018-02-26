@@ -22,6 +22,7 @@
     "passport-local": "^1.0.0",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
+    "rabbot": "^2.1.0",
     "sequelize": "^4.32.1",
     "sequelize-cli": "^3.2.0",
     "serve-favicon": "~2.4.5",

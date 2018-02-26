@@ -1,3 +1,9 @@
+Redis-start:
+
+redis-server /usr/local/etc/redis.conf
+redis-cli -s /tmp/redis.sock
+
+
 Create model:
 
 1. node_modules/.bin/sequelize model:generate --name Users --attributes username:string,password:string
