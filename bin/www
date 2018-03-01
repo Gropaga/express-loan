@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 
-const appKey = process.env.APP;
-const app = require('../app-' + appKey);
+const app = require('app');
 const debug = require('debug')('express-loan:server');
 const http = require('http');
 const config = require('config');
