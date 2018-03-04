@@ -2,11 +2,6 @@ const rabbot = require("../node_modules/rabbot");
 const config = require("config");
 const fs = require('fs');
 
-rabbot.handle('MyMessage', (msg) => {
-    console.log('received msg', msg.body);
-    msg.ack();
-});
-
 rabbot.configure(config.rabbot).then(function () {
     console.log('Rabbot: successfully connected');
 }).catch(function (err) {
