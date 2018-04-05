@@ -1,0 +1,1 @@
+render(<ThinkingInReact/>, document.getElementById('thinkingReact'));

@@ -3,7 +3,7 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
         const now = new Date();
-        return queryInterface.bulkInsert('Loans', [{
+        return queryInterface.bulkInsert('Applications', [{
             status: 'draft',
             identifier: '000001',
             description: 'MacBook Pro 15',
@@ -18,6 +18,6 @@ module.exports = {
     },
 
     down: (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('Loans', null, {});
+        return queryInterface.bulkDelete('Applications', null, {});
     }
 };

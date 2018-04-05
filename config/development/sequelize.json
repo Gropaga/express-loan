@@ -1,8 +1,8 @@
 {
-  "uri": "postgres://node_loan_user:Test1234@127.0.0.1:5432/node_loan_db",
+  "uri": "postgres://node_loan_user:Test1234@127.0.0.1:5432/dev_express_loan",
   "username": "node_loan_user",
   "password": "Test1234",
-  "database": "node_loan_db",
+  "database": "dev_express_loan",
   "host": "127.0.0.1",
   "dialect": "postgres"
 }
