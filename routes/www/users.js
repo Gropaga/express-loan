@@ -51,16 +51,16 @@ router.get('/clients', async function (req, res, next) {
 
 });
 
-/* GET loans listing. */
-router.get('/loans', async function (req, res, next) {
-    const Loan = models.Sequelize.Loan;
+/* GET applications listing. */
+router.get('/applications', async function (req, res, next) {
+    const Application = models.Sequelize.Application;
     try {
-        loans = await Loan.findAll({ include: [
+        applications = await Application.findAll({ include: [
             {model: models.Sequelize.Client, include: models.Sequelize.User},
             {model: models.Sequelize.Shop, include: models.Sequelize.User},
             {model: models.Sequelize.Partner, include: models.Sequelize.User},
         ] });
-        res.json(loans);
+        res.json(applications);
     } catch(err) {
         next(err);
     }
