@@ -10,7 +10,7 @@
     "connect-redis": "^3.3.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
-    "ejs": "~2.5.7",
+    "ejs": "^2.5.8",
     "ejs-locals": "^1.0.2",
     "express": "~4.15.5",
     "express-session": "^1.15.6",
@@ -23,10 +23,10 @@
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
     "rabbot": "^2.1.0",
-    "sequelize": "^4.32.1",
+    "sequelize": "^4.37.5",
     "sequelize-cli": "^3.2.0",
     "serve-favicon": "~2.4.5",
-    "winston": "^2.4.0"
+    "winston": "^2.4.1"
   },
   "devDependencies": {
     "errorhandler": "^1.5.0"
