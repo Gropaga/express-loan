@@ -5,19 +5,31 @@ const BUILD_DIR = path.resolve(__dirname, '../public/js');
 const APP_DIR = path.resolve(__dirname, 'src/client/app');
 
 const config = {
-    entry: APP_DIR + '/index.jsx',
+    entry: {
+        thinkingInReact: APP_DIR + '/thinkingInReact/index.js',
+    },
     output: {
         path: BUILD_DIR,
-        filename: 'bundle.js'
+        filename: '[name].js',
     },
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.js?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
                 }
+            },
+            {
+                test: /\.scss?$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader" // compiles Sass to CSS
+                }]
             }
         ]
     },
