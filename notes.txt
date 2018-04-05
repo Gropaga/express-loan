@@ -21,4 +21,4 @@ node_modules/.bin/sequelize model:generate --name Shops --attributes name:string
 
 node_modules/.bin/sequelize model:generate --name Partners --attributes name:string,bank_account:string
 
-node_modules/.bin/sequelize model:generate --name Loans --attributes name:string,bank_account:string,status:string,request_number:string,request:description:text,amount_amount:decimal,amount_currency:string
+node_modules/.bin/sequelize model:generate --name Applications --attributes name:string,bank_account:string,status:string,request_number:string,request:description:text,amount_amount:decimal,amount_currency:string
