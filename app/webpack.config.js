@@ -7,6 +7,7 @@ const APP_DIR = path.resolve(__dirname, 'src/client/app');
 const config = {
     entry: {
         thinkingInReact: APP_DIR + '/thinkingInReact/index.js',
+        form: APP_DIR + '/applicationForm/index.js',
     },
     output: {
         path: BUILD_DIR,

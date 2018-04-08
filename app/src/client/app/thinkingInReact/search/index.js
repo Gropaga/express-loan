@@ -7,7 +7,7 @@ class Search extends React.Component {
         super(props);
 
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-        this.handleSearchInputChange= this.handleSearchInputChange.bind(this);
+        this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
     }
 
     handleSearchInputChange(event) {
