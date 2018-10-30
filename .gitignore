@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+data
 
 # Runtime data
 pids
@@ -20,7 +21,7 @@ coverage
 .lock-wscript
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+src/build/Release
 
 # Dependency directory
 # https://docs.npmjs.com/cli/shrinkwrap#caveats
@@ -30,7 +31,7 @@ node_modules
 npm-debug.log
 
 # Production config
-config/production
+src/config/production
 
 .idea
 .DS_Store
@@ -41,13 +42,13 @@ config/production
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/app/node_modules
+src/app/node_modules
 
 # testing
-/app/coverage
+src/app/coverage
 
 # production
-/app/build
+src/app/build
 
 # misc
 .DS_Store
@@ -60,4 +61,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/public/js/bundle.js
+src/public/js/bundle.js

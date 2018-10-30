@@ -9,7 +9,7 @@ const config = require('config');
 const expressErrorHandler = require('errorhandler');
 const session = require('./libs/session');
 const passport = require('./libs/passport');
-const rabbot = require('./rabbot');
+// const rabbot = require('./rabbot');
 
 const db = require('./libs/db');
 
