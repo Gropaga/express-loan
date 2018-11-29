@@ -13,5 +13,5 @@ module.exports = function(app) {
     app.use('/', form);
 
     // TODO remove thinking in React
-    // app.use('/thinkingInReact', thinkingInReact);
+    app.use('/thinkingInReact', thinkingInReact);
 };

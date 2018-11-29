@@ -4,7 +4,17 @@ const Sequelize = require('sequelize');
  *
  * @type {Sequelize}
  */
+
+console.log('config.sequelize', config.sequelize);
+
 module.exports = new Sequelize(
-    config.sequelize.uri,
-    { operatorsAliases: false }
+    config.sequelize.database,
+    config.sequelize.username,
+    config.sequelize.password,
+    {
+        host: process.env.POSTGRES_HOST || config.sequelize.host,
+        dialect: 'postgres',
+        // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
+        operatorsAliases: false,
+    }
 );
