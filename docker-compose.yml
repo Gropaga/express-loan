@@ -20,7 +20,6 @@ services:
     working_dir: /usr/src/app
     environment:
         - REDIS_HOST=redis_container
-        - POSTGRES_HOST=postgres_database
     command: >
                bash -c "ls -lt &&
                pwd &&

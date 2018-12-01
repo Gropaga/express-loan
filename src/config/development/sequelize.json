@@ -2,6 +2,6 @@
   "username": "node_loan_user",
   "password": "Test1234",
   "database": "dev_express_loan",
-  "host": "127.0.0.1",
+  "host": "postgres_database",
   "dialect": "postgres"
 }

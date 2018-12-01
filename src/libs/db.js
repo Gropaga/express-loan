@@ -12,7 +12,7 @@ module.exports = new Sequelize(
     config.sequelize.username,
     config.sequelize.password,
     {
-        host: process.env.POSTGRES_HOST || config.sequelize.host,
+        host: config.sequelize.host,
         dialect: 'postgres',
         // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
         operatorsAliases: false,
