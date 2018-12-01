@@ -3,13 +3,6 @@
 const path = require('path');
 const fs = require('fs');
 
-console.log(path.join(
-    process.env.CONFIG_PATH || __dirname,
-    (process.env.NODE_ENV || 'development')
-));
-
-console.log(__dirname);
-
 let configArray = fs.readdirSync(path.join(
     __dirname,
     (process.env.NODE_ENV || 'development')

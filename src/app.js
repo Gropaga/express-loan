@@ -7,11 +7,11 @@ const bodyParser = require('body-parser');
 const HttpError = require('error').HttpError;
 const config = require('config');
 const expressErrorHandler = require('errorhandler');
-const session = require('./libs/session');
-const passport = require('./libs/passport');
+const session = require('libs/session');
+const passport = require('libs/passport');
 // const rabbot = require('./rabbot');
 
-const db = require('./libs/db');
+const db = require('libs/db');
 
 const app = express();
 // setting routes
@@ -33,9 +33,9 @@ app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(require('./middleware/http-error'));
-app.use(require('./middleware/flash'));
-app.use(require('./middleware/set-locals'));
+app.use(require('middleware/http-error'));
+app.use(require('middleware/flash'));
+app.use(require('middleware/set-locals'));
 
 require('routes')(app);
 

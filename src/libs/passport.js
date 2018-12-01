@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const BasicStrategy = require('passport-http').BasicStrategy;
-const models = require('../models/index');
+const models = require('db/models/index');
 
 passport.AUTH_WWW = 'authWww';
 passport.AUTH_SHOP = 'shopAuth';

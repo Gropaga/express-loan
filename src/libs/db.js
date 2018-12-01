@@ -5,8 +5,6 @@ const Sequelize = require('sequelize');
  * @type {Sequelize}
  */
 
-console.log('config.sequelize', config.sequelize);
-
 module.exports = new Sequelize(
     config.sequelize.database,
     config.sequelize.username,

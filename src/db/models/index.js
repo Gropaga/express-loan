@@ -5,7 +5,7 @@ const path = require('path');
 const sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const dbExport = {};
-const Sequelize = require('../libs/db');
+const Sequelize = require('libs/db');
 
 fs
     .readdirSync(__dirname)
