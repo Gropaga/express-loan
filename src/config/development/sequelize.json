@@ -1,7 +1,0 @@
-{
-  "username": "node_loan_user",
-  "password": "Test1234",
-  "database": "dev_express_loan",
-  "host": "postgres_database",
-  "dialect": "postgres"
-}

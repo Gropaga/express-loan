@@ -1,0 +1,7 @@
+{
+  "username": "user",
+  "password": "password",
+  "database": "backend",
+  "host": "backend-database",
+  "dialect": "postgres"
+}

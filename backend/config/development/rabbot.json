@@ -3,7 +3,7 @@
     "user": "guest",
     "pass": "guest",
     "server": [
-      "127.0.0.1"
+      "rabbitmq-server"
     ],
     "port": 5672,
     "vhost": "%2f",

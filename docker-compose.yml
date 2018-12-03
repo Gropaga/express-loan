@@ -1,44 +1,104 @@
 version: '3'
 services:
-  nginx:
+  backend-nginx:
+    container_name: backend-nginx-container
     image: nginx:latest
     ports:
       - "3000:3000"
     links:
       - backend
     volumes:
-          - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+          - ./nginx/backend.conf:/etc/nginx/conf.d/default.conf
+  processor-nginx:
+    container_name: processor-nginx-container
+    image: nginx:latest
+    ports:
+      - "3001:3000"
+    links:
+      - processor
+    volumes:
+          - ./nginx/processor.conf:/etc/nginx/conf.d/default.conf
   backend:
-    container_name: backend
+    container_name: backend-container
     image: node:8
     volumes:
-      - ./src:/usr/src/app
-      - ./logs:/root/.npm/_logs
+      - ./backend:/usr/src/app
+      - ./backend/logs:/root/.npm/_logs
     links:
-      - redis
-      - postgres
+      - backend-redis
+      - backend-db
+      - rabbitmq
     working_dir: /usr/src/app
     environment:
-        - REDIS_HOST=redis_container
+        - REDIS_HOST=backend-redis-container
     command: >
                bash -c "ls -lt &&
                pwd &&
                npm start"
-  redis:
-    container_name: redis_container
+  processor:
+     container_name: processor-container
+     image: node:8
+     volumes:
+       - ./processor:/usr/src/app
+       - ./logs/processor:/root/.npm/_logs
+     links:
+       - processor-redis
+       - processor-db
+       - rabbitmq
+     working_dir: /usr/src/app
+     environment:
+         - REDIS_HOST=processor-redis-container
+     command: >
+                bash -c "ls -lt &&
+                pwd &&
+                npm start"
+  backend-redis:
+    container_name: backend-redis-container
     image: redis:5
     expose:
       - 6379
     volumes:
-      - ./data/redis:/data
+      - ./data/backend/redis:/data
     restart: always
-  postgres:
-      container_name: postgres_database
+  processor-redis:
+    container_name: processor-redis-container
+    image: redis:5
+    expose:
+      - 6379
+    volumes:
+      - ./data/processor/redis:/data
+    restart: always
+  rabbitmq:
+      container_name: rabbitmq
+      image: "rabbitmq:3-management"
+      hostname: "rabbitmq-server"
+      environment:
+        RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+        RABBITMQ_DEFAULT_USER: "rabbitmq"
+        RABBITMQ_DEFAULT_PASS: "rabbitmq"
+        RABBITMQ_DEFAULT_VHOST: "/"
+      ports:
+        - "15672:15672"
+        - "5672:5672"
+      labels:
+          NAME: "rabbitmq-processor"
+  backend-db:
+      container_name: backend-database
       image: postgres:11
       volumes:
-        - "./data/postgres:/var/lib/postgresql/data"
+        - ./data/backend/postgres:/var/lib/postgresql/data
       restart: always
       environment:
-        POSTGRES_PASSWORD: Test1234
-        POSTGRES_DB: dev_express_loan
-        POSTGRES_USER: node_loan_user
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: backend
+  processor-db:
+        container_name: processor-database
+        image: postgres:11
+        volumes:
+          - ./data/processor/postgres:/var/lib/postgresql/data
+        restart: always
+        environment:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: processor
