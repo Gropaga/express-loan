@@ -46,8 +46,6 @@ services:
        - processor-db
        - rabbitmq
      working_dir: /usr/src/app
-     environment:
-         - REDIS_HOST=processor-redis-container
      command: >
                 bash -c "ls -lt &&
                 pwd &&

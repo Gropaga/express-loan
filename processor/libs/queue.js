@@ -3,8 +3,7 @@
 const config = require('config');
 // NOTE: set db: 0
 const queue = require('kue').createQueue({
-    socket: config.redis.path,
-    db: config.redis.db
+    redis: config.redis
 });
 
 queue.watchStuckJobs(6000);
